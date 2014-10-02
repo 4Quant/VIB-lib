@@ -1,95 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>quant.tipl</groupId>
+  <artifactId>tipl-VIB</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>ccgeom</name>
+  <url>http://www.4quant.com</url>
+  <parent>
+    <groupId>quant.tipl</groupId>
+    <artifactId>quant-tipl</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+         <groupId>quant.tipl</groupId>
+      <artifactId>tipl-core</artifactId>
+  <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
-	<parent>
-		<groupId>sc.fiji</groupId>
-		<artifactId>pom-fiji</artifactId>
-		<version>2.0.0-beta-0</version>
-		<relativePath />
-	</parent>
-
-	<artifactId>VIB-lib</artifactId>
-	<version>2.0.1-SNAPSHOT</version>
-
-	<name>jars/VIB-lib.jar</name>
-	<description>Support library for all the VIB stuff.</description>
-
-	<developers>
-		<developer>
-			<name>Johannes Schindelin</name>
-		</developer>
-		<developer>
-			<name>Benjamin Schmid</name>
-		</developer>
-		<developer>
-			<name>Mark Longair</name>
-		</developer>
-	</developers>
-
-	<dependencies>
-		<dependency>
-			<groupId>gov.nist.math</groupId>
-			<artifactId>jama</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>sc.fiji</groupId>
-			<artifactId>fiji-lib</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.imagej</groupId>
-			<artifactId>ij</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jzlib</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>sc.fiji</groupId>
-			<artifactId>pal-optimization</artifactId>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://jenkins.imagej.net/job/VIB-lib/</url>
-	</ciManagement>
-
-	<scm>
-		<connection>scm:git:git://github.com/fiji/VIB-lib</connection>
-		<developerConnection>scm:git:git@github.com:fiji/VIB-lib</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://github.com/fiji/VIB-lib</url>
-	</scm>
-
-	<repositories>
-		<!-- NB: for project parent, in case of partial checkout -->
-		<repository>
-			<id>imagej.public</id>
-			<url>http://maven.imagej.net/content/groups/public</url>
-		</repository>
-	</repositories>
-
+  <properties>
+    <scala.version>2.10.4</scala.version>
+    <java.version>1.6</java.version>
+    <scala.binary.version>2.10</scala.binary.version>
+    <scala.macros.version>2.0.1</scala.macros.version>
+    <spark.version>1.0.2</spark.version>
+       <PermGen>64m</PermGen>
+    <MaxPermGen>512m</MaxPermGen>
+</properties>
 </project>
