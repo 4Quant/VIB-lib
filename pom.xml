@@ -5,7 +5,7 @@
   <artifactId>tipl-VIB</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ccgeom</name>
+  <name>VIB</name>
   <url>http://www.4quant.com</url>
   <parent>
     <groupId>quant.tipl</groupId>
@@ -28,13 +28,4 @@
     </dependency>
   </dependencies>
 
-  <properties>
-    <scala.version>2.10.4</scala.version>
-    <java.version>1.6</java.version>
-    <scala.binary.version>2.10</scala.binary.version>
-    <scala.macros.version>2.0.1</scala.macros.version>
-    <spark.version>1.0.2</spark.version>
-       <PermGen>64m</PermGen>
-    <MaxPermGen>512m</MaxPermGen>
-</properties>
 </project>
