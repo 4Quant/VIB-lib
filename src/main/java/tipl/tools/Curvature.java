@@ -40,17 +40,8 @@ import tipl.util.*;
  * gaussian filter
  */
 public class Curvature extends BaseTIPLPluginIO {
-    @TIPLPluginManager.PluginInfo(pluginType = "Curvature",
-            desc = "Full memory curvature (using VFIlterScale)",
-            sliceBased = false,
-            bytesPerVoxel = -1)
-    final public static TIPLPluginManager.TIPLPluginFactory myFactory = new TIPLPluginManager.TIPLPluginFactory() {
-        @Override
-        public ITIPLPlugin get() {
-            return new Curvature();
-        }
-    };
     protected GrayVoxels gv;
+    ;
     protected GrayVoxels[] gvresult;
     double sigma = 0.5;
     float processThresh = 0.5f;
@@ -187,12 +178,12 @@ public class Curvature extends BaseTIPLPluginIO {
 
         finputAim.getBoolAim(); // make it into a boolean array before reading
         // it as a float array
-        
-        final ITIPLPluginIO fs = TIPLPluginManager.createBestPluginIO("Filter", new TImgRO[] {finputAim});
-        fs.LoadImages( new TImgRO[] {finputAim});
-        final D3int ds = new D3int(dnV,dnV,dnV);
-        final D3int up = new D3int(upV,upV,upV);
-        fs.setParameter("-upfactor="+up+" -downfactor="+ds+" -filtersetting="+isig+" -filter="+FilterSettings.GAUSSIAN);
+
+        final ITIPLPluginIO fs = TIPLPluginManager.createBestPluginIO("Filter", new TImgRO[]{finputAim});
+        fs.LoadImages(new TImgRO[]{finputAim});
+        final D3int ds = new D3int(dnV, dnV, dnV);
+        final D3int up = new D3int(upV, upV, upV);
+        fs.setParameter("-upfactor=" + up + " -downfactor=" + ds + " -filtersetting=" + isig + " -filter=" + FilterSettings.GAUSSIAN);
         fs.execute();
 
 
@@ -265,7 +256,7 @@ public class Curvature extends BaseTIPLPluginIO {
 
         // get kernel sum
         /*
-		 * for (double value : kernel) kernelsum += value;
+         * for (double value : kernel) kernelsum += value;
 		 */
         for (float aKernel : kernel) kernelsum += aKernel;
 
@@ -758,6 +749,17 @@ public class Curvature extends BaseTIPLPluginIO {
     public TImg[] ExportImages(TImgRO templateImage) {
         TImgRO.CanExport templateAim = TImgTools.makeTImgExportable(templateImage);
         return new TImg[]{CreateOutputImage(templateAim, 0)};
+    }
+
+    @TIPLPluginManager.PluginInfo(pluginType = "Curvature",
+            desc = "Full memory curvature (using VFIlterScale)",
+            sliceBased = false,
+            bytesPerVoxel = -1)
+    final public static class clSparkFactory implements TIPLPluginManager.TIPLPluginFactory {
+        @Override
+        public ITIPLPlugin get() {
+            return new Curvature();
+        }
     }
 
     /**
